@@ -1,0 +1,499 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Cormorant Garamond", Georgia, serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-mono: "Playfair Display", Georgia, serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 12px);
+}
+
+:root {
+  --radius: 1rem;
+
+  /* ═══ Wine & Cream — Premium палитра ═══
+   * Тёплый cream, глубокий wine, antique gold
+   * Минимализм, editorial feel, без розового
+   */
+
+  --background: oklch(0.97 0.006 75);
+  --foreground: oklch(0.18 0.01 30);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.01 30);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.01 30);
+
+  /* Единственный акцент — Deep Wine */
+  --primary: oklch(0.38 0.1 355);
+  --primary-foreground: oklch(0.97 0.006 75);
+
+  --secondary: oklch(0.95 0.008 75);
+  --secondary-foreground: oklch(0.3 0.02 30);
+
+  --muted: oklch(0.95 0.008 75);
+  --muted-foreground: oklch(0.55 0.015 60);
+
+  /* Antique Gold — для прогресса и наград */
+  --accent: oklch(0.68 0.08 75);
+  --accent-foreground: oklch(0.25 0.02 30);
+
+  --destructive: oklch(0.5 0.18 25);
+
+  --border: oklch(0.92 0.006 60);
+  --input: oklch(0.93 0.006 60);
+  --ring: oklch(0.38 0.1 355);
+
+  --chart-1: oklch(0.38 0.1 355);
+  --chart-2: oklch(0.68 0.08 75);
+  --chart-3: oklch(0.55 0.015 60);
+  --chart-4: oklch(0.7 0.06 75);
+  --chart-5: oklch(0.4 0.08 355);
+
+  --sidebar: oklch(0.97 0.006 75);
+  --sidebar-foreground: oklch(0.18 0.01 30);
+  --sidebar-primary: oklch(0.38 0.1 355);
+  --sidebar-primary-foreground: oklch(0.97 0.006 75);
+  --sidebar-accent: oklch(0.95 0.008 75);
+  --sidebar-accent-foreground: oklch(0.3 0.02 30);
+  --sidebar-border: oklch(0.92 0.006 60);
+  --sidebar-ring: oklch(0.38 0.1 355);
+
+  /* ═══ Кастомные токены ═══ */
+  --wine-solid: oklch(0.38 0.1 355);
+  --wine-tint: oklch(0.38 0.1 355 / 0.04);
+  --wine-border: oklch(0.38 0.1 355 / 0.15);
+  --wine-halo: oklch(0.38 0.1 355 / 0.1);
+
+  --gold-solid: oklch(0.68 0.08 75);
+  --gold-tint: oklch(0.68 0.08 75 / 0.1);
+  --gold-border: oklch(0.68 0.08 75 / 0.25);
+
+  --cream-bg: oklch(0.97 0.006 75);
+  --cream-card: oklch(1 0 0);
+
+  --text-primary: oklch(0.18 0.01 30);
+  --text-secondary: oklch(0.45 0.015 60);
+  --text-muted: oklch(0.6 0.012 60);
+
+  /* Premium тени — tinted, не серые */
+  --shadow-sm: 0 1px 2px 0 oklch(0.3 0.02 30 / 0.04);
+  --shadow-md: 0 4px 12px -2px oklch(0.3 0.02 30 / 0.06), 0 2px 6px -2px oklch(0.3 0.02 30 / 0.04);
+  --shadow-lg: 0 16px 40px -8px oklch(0.3 0.02 30 / 0.1), 0 4px 12px -2px oklch(0.3 0.02 30 / 0.06);
+  --shadow-xl: 0 24px 56px -8px oklch(0.3 0.02 30 / 0.14), 0 8px 20px -4px oklch(0.3 0.02 30 / 0.08);
+  --shadow-wine: 0 4px 14px oklch(0.38 0.1 355 / 0.2);
+  --shadow-wine-lg: 0 8px 24px oklch(0.38 0.1 355 / 0.25);
+  --shadow-gold: 0 4px 14px oklch(0.68 0.08 75 / 0.15);
+
+  /* Glassmorphism */
+  --glass-bg: oklch(1 0 0 / 0.78);
+  --glass-border: oklch(1 0 0 / 0.6);
+  --glass-blur: 16px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ *  WINE & CREAM — PREMIUM DESIGN SYSTEM
+ * ═══════════════════════════════════════════════════════════════ */
+
+.font-display {
+  font-family: "Playfair Display", Georgia, serif;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+.font-body {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+.font-ui {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+/* ═══ Фон квеста — тёплый cream с subtle винеткой ═══ */
+.quest-bg {
+  background: oklch(0.97 0.006 75);
+  position: relative;
+  min-height: 100vh;
+}
+
+.quest-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, oklch(0.38 0.1 355 / 0.04), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, oklch(0.68 0.08 75 / 0.05), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══ Карточка — чистая, без бордера, tinted тень ═══ */
+.romantic-card {
+  background: oklch(1 0 0);
+  border: none;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+/* ═══ Инпут — Notion-style, тонкая рамка ═══ */
+.romantic-input {
+  background: oklch(0.97 0.006 75);
+  border: 1px solid oklch(0.92 0.006 60);
+  color: oklch(0.18 0.01 30);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  letter-spacing: 0.01em;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: none;
+}
+
+.romantic-input:focus {
+  outline: none;
+  border-color: oklch(0.38 0.1 355);
+  box-shadow: 0 0 0 4px oklch(0.38 0.1 355 / 0.1);
+  background: oklch(1 0 0);
+}
+
+.romantic-input::placeholder {
+  color: oklch(0.65 0.01 60);
+  font-style: italic;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+/* ═══ Основная кнопка — solid wine, без градиента ═══ */
+.romantic-button {
+  background: oklch(0.38 0.1 355);
+  color: oklch(0.97 0.006 75);
+  font-family: "Inter", -apple-system, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border: none;
+  box-shadow: var(--shadow-wine);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.romantic-button:hover:not(:disabled) {
+  background: oklch(0.34 0.09 355);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-wine-lg);
+}
+
+.romantic-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-wine);
+}
+
+.romantic-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ═══ Вторичная кнопка — ghost, тонкая рамка ═══ */
+.romantic-button-secondary {
+  background: transparent;
+  color: oklch(0.38 0.1 355);
+  border: 1.5px solid oklch(0.38 0.1 355 / 0.2);
+  font-family: "Inter", -apple-system, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: none;
+}
+
+.romantic-button-secondary:hover:not(:disabled) {
+  background: oklch(0.38 0.1 355 / 0.04);
+  border-color: oklch(0.38 0.1 355 / 0.35);
+}
+
+.romantic-button-secondary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ═══ Блок загадки — left-border accent, без полной рамки ═══ */
+.riddle-block {
+  background: oklch(0.38 0.1 355 / 0.025);
+  backdrop-filter: blur(4px);
+  border-left: 3px solid oklch(0.38 0.1 355 / 0.5);
+  border-radius: 0 12px 12px 0;
+  box-shadow: none;
+  position: relative;
+}
+
+.riddle-block::before,
+.riddle-block::after {
+  display: none;
+}
+
+/* ═══ Орнамент-разделитель — тонкая линия с точкой ═══ */
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: oklch(0.68 0.08 75 / 0.6);
+}
+
+.ornament::before,
+.ornament::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, oklch(0.68 0.08 75 / 0.3), transparent);
+  max-width: 60px;
+}
+
+/* ═══ Декоративный заголовок — тонкое золотое подчёркивание ═══ */
+.decorative-title {
+  position: relative;
+  display: inline-block;
+}
+
+.decorative-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1.5px;
+  background: oklch(0.68 0.08 75);
+  border-radius: 2px;
+}
+
+/* ═══ Текстовые стили ═══ */
+.hint-text {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  color: oklch(0.45 0.015 60);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+}
+
+.accent-text {
+  color: oklch(0.38 0.1 355);
+  font-weight: 500;
+}
+
+.gold-text {
+  color: oklch(0.55 0.07 75);
+  font-weight: 600;
+}
+
+/* ═══ UI-лейблы — Inter, uppercase, tracking ═══ */
+.ui-label {
+  font-family: "Inter", -apple-system, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: oklch(0.55 0.015 60);
+}
+
+/* ═══ Скроллбар — тонкий, нейтральный ═══ */
+.no-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.no-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.no-scrollbar::-webkit-scrollbar-thumb {
+  background: oklch(0.85 0.008 60);
+  border-radius: 4px;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.85 0.008 60) transparent;
+}
+
+/* ═══ АНИМАЦИИ — premium, плавные ═══ */
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.08); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.05); }
+  60% { transform: scale(1); }
+}
+
+.heartbeat {
+  animation: heartbeat 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Тонкие падающие лепестки — едва заметные */
+@keyframes petal-fall {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 0.25; }
+  90% { opacity: 0.2; }
+  100% {
+    transform: translateY(110vh) translateX(var(--drift, 30px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.fall-petal {
+  position: fixed;
+  top: 0;
+  font-size: var(--size, 0.7rem);
+  animation: petal-fall var(--duration, 24s) linear infinite;
+  animation-delay: var(--delay, 0s);
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+  opacity: 0.25;
+}
+
+/* Лёгкое покачивание */
+@keyframes gentle-sway {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50% { transform: rotate(1.5deg); }
+}
+
+.gentle-sway {
+  animation: gentle-sway 5s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Мерцание */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.twinkle {
+  animation: twinkle 5s ease-in-out infinite;
+}
+
+/* Появление */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ═══ ПРОГРЕСС-ИНДИКАТОР ═══ */
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: oklch(0.9 0.006 60);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.progress-dot.active {
+  background: oklch(0.38 0.1 355);
+  transform: scale(1.5);
+  box-shadow: 0 0 0 3px oklch(0.38 0.1 355 / 0.15);
+}
+
+.progress-dot.completed {
+  background: oklch(0.68 0.08 75);
+}
+
+/* ═══ Бейджи ═══ */
+.premium-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: oklch(0.38 0.1 355 / 0.06);
+  border: 1px solid oklch(0.38 0.1 355 / 0.15);
+  color: oklch(0.38 0.1 355);
+}
+
+.premium-badge-gold {
+  background: oklch(0.68 0.08 75 / 0.1);
+  border: 1px solid oklch(0.68 0.08 75 / 0.25);
+  color: oklch(0.5 0.06 75);
+}
+
+/* ═══ Тряска при неверном ответе ═══ */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+/* ═══ Reduced motion ═══ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
